@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reciclatrônica - Sustentabilidade e Estilo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --verde-escuro: #1a4d1a;
+            --verde-medio: #2e7d32;
+            --verde-claro: #4caf50;
+            --verde-muito-claro: #e8f5e9;
+            --branco: #ffffff;
+            --texto-escuro: #333333;
+            --destaque: #ffc107;
+        }
+        
+        body {
+            background-color: var(--branco);
+            color: var(--texto-escuro);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header e Navegação - CORRIGIDO */
+        header {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            color: var(--branco);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: var(--branco);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: var(--branco);
+            text-decoration: none;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            color: var(--branco);
+        }
+        
+        /* Seção Hero */
+        .hero {
+            background: linear-gradient(rgba(26, 77, 26, 0.85), rgba(46, 125, 50, 0.85)), url('https://images.unsplash.com/photo-1601924582970-9238bcb495d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--branco);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .newsletter {
+            display: flex;
+            justify-content: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .newsletter input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter button {
+            background-color: var(--destaque);
+            color: var(--texto-escuro);
+            border: none;
+            padding: 0 2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter button:hover {
+            background-color: #ffca28;
+        }
+        
+        .destaque-texto {
+            background-color: var(--destaque);
+            color: var(--texto-escuro);
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Seção Produtos */
+        .produtos {
+            padding: 4rem 0;
+            background-color: var(--verde-muito-claro);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--verde-escuro);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--verde-claro);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .produto-card {
+            background-color: var(--branco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .produto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .produto-imagem {
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+        
+        .produto-info {
+            padding: 1.5rem;
+        }
+        
+        .produto-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--verde-escuro);
+        }
+        
+        .produto-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .produto-preco {
+            font-weight: bold;
+            color: var(--verde-medio);
+            font-size: 1.2rem;
+        }
+        
+        /* Seção Coleta */
+        .collection {
+            padding: 4rem 0;
+            background-color: var(--branco);
+        }
+        
+        .cities-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .city-tab {
+            padding: 0.8rem 1.8rem;
+            background-color: var(--branco);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--verde-claro);
+            font-weight: 600;
+            color: var(--verde-escuro);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .city-tab.active {
+            background-color: var(--verde-medio);
+            color: var(--branco);
+            border-color: var(--verde-medio);
+        }
+        
+        .city-tab:hover:not(.active) {
+            background-color: var(--verde-claro);
+            color: var(--branco);
+        }
+        
+        .collection-points {
+            display: none;
+            background-color: var(--verde-muito-claro);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .collection-points.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .points-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .point-item {
+            background-color: var(--branco);
+            padding: 1.8rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--verde-claro);
+        }
+        
+        .point-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .point-name {
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: var(--verde-escuro);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            color: var(--branco);
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--destaque);
+        }
+        
+        .footer-section p, .footer-section a {
+            margin-bottom: 1rem;
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .footer-section a:hover {
+            color: var(--destaque);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--destaque);
+            transform: translateY(-3px);
+            color: var(--texto-escuro);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .logo-container {
+                justify-content: center;
+            }
+            
+            nav ul {
+                width: 100%;
+                justify-content: space-around;
+                gap: 1rem;
+            }
+            
+            nav ul li a {
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .newsletter {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .newsletter input, .newsletter button {
+                width: 100%;
+                border-radius: 0;
+            }
+            
+            .newsletter button {
+                padding: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.4rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            nav ul li a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+    <link rel="icon" href="imagens/reciclatronica/logoreciclatronica.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Header e Navegação CORRIGIDO -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo-container">
+                <a href="reciclatronica.html">
+                    <img src="imagens/reciclatronica/logoreciclatronica.ico" alt="Reciclatrônica" class="logo-img">
+                </a>
+                <div class="logo-text">RESCICLATRONICA</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#coleta">COLETA</a></li>
+                    <li><a href="#comprar">COMPRAR</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Estilo e qualidade em camisetas sociais, mangas curtas, jaquetas e casacos</h1>
+            <div class="destaque-texto">
+                FIQUE POR DENTRO DAS NOVIDADES
+            </div>
+            <p>Cadastre-se para receber em primeira mão todas as novidades e promoções exclusivas da Reciclatrônica</p>
+            <div class="newsletter">
+                <input type="email" placeholder="Seu melhor e-mail">
+                <button>Assinar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Produtos -->
+    <section id="comprar" class="produtos">
+        <div class="container">
+            <h2 class="section-title">NOSSOS PRODUTOS</h2>
+            <div class="produtos-grid">
+                <div class="produto-card">
+                    <div class="produto-imagem">
+                        <i class="fas fa-tshirt" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Camisetas Sociais</h3>
+                        <p>Conforto e estilo para o seu dia a dia</p>
+                        <div class="produto-preco">R$ 49,90</div>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-imagem">
+                        <i class="fas fa-vest" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Jaquetas</h3>
+                        <p>Proteção com design moderno</p>
+                        <div class="produto-preco">R$ 129,90</div>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-imagem">
+                        <i class="fas fa-temperature-low" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Casacos</h3>
+                        <p>Aquecimento e estilo sustentável</p>
+                        <div class="produto-preco">R$ 159,90</div>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <div class="produto-imagem">
+                        <i class="fas fa-socks" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Acessórios</h3>
+                        <p>Complete seu visual com nossos acessórios</p>
+                        <div class="produto-preco">R$ 29,90</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Coleta -->
+    <section id="coleta" class="collection">
+        <div class="container">
+            <h2 class="section-title">PONTOS DE COLETA</h2>
+            <p style="text-align: center; margin-bottom: 2.5rem; font-size: 1.1rem;">Reciclatrônica está presente em várias cidades para facilitar o processo de reciclagem de roupas. Encontre os pontos de coleta mais próximos de você!</p>
+            
+            <div class="cities-tabs">
+                <div class="city-tab active" data-city="sao-paulo">São Paulo</div>
+                <div class="city-tab" data-city="rio-de-janeiro">Rio de Janeiro</div>
+                <div class="city-tab" data-city="curitiba">Curitiba</div>
+                <div class="city-tab" data-city="belem">Belém</div>
+            </div>
+            
+            <!-- Pontos de Coleta - São Paulo -->
+            <div id="sao-paulo" class="collection-points active">
+                <h3>São Paulo</h3>
+                <div class="points-list">
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Morumbi</div>
+                        <p>Av. Roque Petroni Jr., 1089</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Ibirapuera</div>
+                        <p>Av. Ibirapuera, 3103</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Center 3</div>
+                        <p>R. Cel. Xavier de Toledo, 23</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping JK Iguatemi</div>
+                        <p>Av. Pres. Juscelino Kubitschek, 2041</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pontos de Coleta - Rio de Janeiro -->
+            <div id="rio-de-janeiro" class="collection-points">
+                <h3>Rio de Janeiro</h3>
+                <div class="points-list">
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Leblon</div>
+                        <p>Av. Afrânio de Melo Franco, 290</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Rio Sul</div>
+                        <p>Rua Lauro Müller, 116</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Tijuca</div>
+                        <p>Av. Maracanã, 987</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Village Mall</div>
+                        <p>Av. das Américas, 3900</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pontos de Coleta - Curitiba -->
+            <div id="curitiba" class="collection-points">
+                <h3>Curitiba</h3>
+                <div class="points-list">
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Palladium</div>
+                        <p>Av. Pres. Kennedy, 4121</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Crystal</div>
+                        <p>BR-116, 2250</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Curitiba</div>
+                        <p>Av. Brigadeiro Franco, 3456</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Ventura Shopping</div>
+                        <p>R. Itacolomi, 292</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pontos de Coleta - Belém -->
+            <div id="belem" class="collection-points">
+                <h3>Belém</h3>
+                <div class="points-list">
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Castanheira</div>
+                        <p>Av. Gov. José Malcher, 591</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Metrópole</div>
+                        <p>Rod. BR-316, S/N</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica - Shopping Pátio Belém</div>
+                        <p>Tv. Padre Eutíquio, 1298</p>
+                    </div>
+                    <div class="point-item">
+                        <div class="point-name">Reciclatrônica – Shopping Bosque Grão Pará</div>
+                        <p>Av. Augusto Montenegro, 4300</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>INSTRUCIONAL</h3>
+                    <a href="#">Como Doar Roupas</a>
+                    <a href="#">Processo de Reciclagem</a>
+                    <a href="#">Perguntas Frequentes</a>
+                    <a href="#">Guia de Tamanhos</a>
+                    <a href="#">Cuidados com as Roupas</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>AJUDA</h3>
+                    <a href="#">Central de Ajuda</a>
+                    <a href="#">Política de Trocas</a>
+                    <a href="#">Formas de Pagamento</a>
+                    <a href="#">Entregas e Prazos</a>
+                    <a href="#">Rastrear Pedido</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>ATENDIMENTO</h3>
+                    <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> contato@reciclatronica.com</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta: 9h às 18h</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ventura Shopping
+                        R. Itacolomi, 292 - Curitiba, PR</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>SIGA NAS REDES</h3>
+                    <p>Fique por dentro das novidades e promoções</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div style="margin-top: 1.5rem;">
+                        <h4>NEWSLETTER</h4>
+                        <p>Receba nossas novidades por e-mail</p>
+                        <div style="display: flex; margin-top: 10px;">
+                            <input type="email" placeholder="Seu e-mail" style="flex: 1; padding: 8px; border: none; border-radius: 4px 0 0 4px;">
+                            <button style="background: var(--destaque); color: var(--texto-escuro); border: none; padding: 0 15px; border-radius: 0 4px 4px 0; cursor: pointer; font-weight: bold;">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Reciclatrônica - Todos os direitos reservados</p>
+                <p>CNPJ: 12.345.678/0001-90</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para alternar entre as cidades nos pontos de coleta
+        document.addEventListener('DOMContentLoaded', function() {
+            const cityTabs = document.querySelectorAll('.city-tab');
+            const collectionPoints = document.querySelectorAll('.collection-points');
+            
+            cityTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove a classe active de todas as abas
+                    cityTabs.forEach(t => t.classList.remove('active'));
+                    // Adiciona a classe active à aba clicada
+                    this.classList.add('active');
+                    
+                    // Remove a classe active de todos os pontos de coleta
+                    collectionPoints.forEach(points => points.classList.remove('active'));
+                    
+                    // Adiciona a classe active aos pontos de coleta correspondentes
+                    const cityId = this.getAttribute('data-city');
+                    document.getElementById(cityId).classList.add('active');
+                });
+            });
+            
+            // Newsletter signup
+            const newsletterBtn = document.querySelector('.newsletter button');
+            newsletterBtn.addEventListener('click', function() {
+                const emailInput = document.querySelector('.newsletter input');
+                const email = emailInput.value.trim();
+                
+                if (email) {
+                    alert(`Obrigado por se inscrever com o e-mail: ${email}`);
+                    emailInput.value = '';
+                } else {
+                    alert('Por favor, insira um e-mail válido.');
+                }
+            });
+            
+            // Footer newsletter
+            const footerNewsletterBtn = document.querySelector('.footer-section button');
+            footerNewsletterBtn.addEventListener('click', function() {
+                const footerEmailInput = document.querySelector('.footer-section input');
+                const footerEmail = footerEmailInput.value.trim();
+                
+                if (footerEmail) {
+                    alert(`Obrigado por se inscrever com o e-mail: ${footerEmail}`);
+                    footerEmailInput.value = '';
+                } else {
+                    alert('Por favor, insira um e-mail válido.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

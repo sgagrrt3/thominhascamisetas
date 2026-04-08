@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Equipe - Thominhas Camisetas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header com logo no canto superior esquerdo */
+        header {
+            background-color: #000;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 102, 0, 0.2);
+            border-bottom: 2px solid #ff6600;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff6600;
+        }
+        
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6600;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: #ff6600;
+            background-color: rgba(255, 102, 0, 0.1);
+        }
+        
+        /* Conteúdo principal com margem para o header fixo */
+        main {
+            margin-top: 90px;
+        }
+        
+        /* Seção Hero */
+        .hero {
+            padding: 120px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1556906781-2f0520405b71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #ddd;
+        }
+        
+        .hero-button {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #ff6600;
+        }
+        
+        .hero-button:hover {
+            background-color: transparent;
+            color: #ff6600;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+        }
+        
+        /* Seção Sobre */
+        .sobre {
+            padding: 80px 20px;
+            background-color: #111;
+            text-align: center;
+        }
+        
+        .sobre-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .sobre-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff6600;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .sobre-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            color: #ddd;
+            line-height: 1.8;
+        }
+        
+        .sobre-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            text-align: center;
+            width: 180px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        /* Seção Equipe */
+        .equipe {
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23111"/><path d="M0 0L100 100" stroke="%23222" stroke-width="1"/><path d="M100 0L0 100" stroke="%23222" stroke-width="1"/></svg>');
+            background-size: 30px;
+            text-align: center;
+            border-top: 2px solid #ff6600;
+            border-bottom: 2px solid #ff6600;
+        }
+        
+        .equipe-title {
+            font-size: 2.8rem;
+            margin-bottom: 50px;
+            color: #ff6600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .equipe-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #ff6600;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .membros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .membro {
+            width: 250px;
+            text-align: center;
+            background: #1a1a1a;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(255, 102, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .membro:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(255, 102, 0, 0.3);
+        }
+        
+        .foto-equipe {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff6600;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+            box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+        }
+        
+        .membro:hover .foto-equipe {
+            transform: scale(1.05);
+        }
+        
+        .nome-membro {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ff6600;
+            font-size: 1.3rem;
+        }
+        
+        .cargo {
+            color: #ff944d;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .descricao {
+            font-size: 0.95rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            background-color: #333;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #ff6600;
+            transform: scale(1.1);
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #000, #1a1a1a);
+        }
+        
+        .cta-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #ff6600;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #ff6600;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #ff6600;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: #ff6600;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 102, 0, 0.3);
+        }
+        
+        footer {
+            background-color: #000;
+            color: #ddd;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            width: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 2px solid #ff6600;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #ff6600;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .membros {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .membro {
+                width: 100%;
+                max-width: 320px;
+            }
+            
+            main {
+                margin-top: 120px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .sobre-title, .equipe-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="imagens/logo.png" alt="Logo Thominhas Camisetas" class="logo">
+            <span class="company-name">THOMINHAS</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a></li>
+                <li><a href="#equipe"><i class="fas fa-users"></i> Nossa Equipe</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Nossa Equipe</h1>
+                <p class="hero-subtitle">Conheça os talentosos profissionais por trás da Thominhas Camisetas, dedicados a criar as melhores peças para você.</p>
+                <a href="#equipe" class="hero-button">Conheça Nossa Equipe</a>
+            </div>
+        </section>
+        
+        <section class="sobre" id="sobre">
+            <div class="container">
+                <h2 class="sobre-title">Sobre a Thominhas</h2>
+                <p class="sobre-text">A Thominhas Camisetas nasceu da paixão por moda e qualidade. Desde 2015, nos dedicamos a criar camisetas que combinam estilo, conforto e durabilidade. Nossa missão é oferecer peças que expressem a personalidade única de cada cliente, sempre com atenção aos detalhes e compromisso com a sustentabilidade.</p>
+                
+                <div class="sobre-stats">
+                    <div class="stat">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">Anos no Mercado</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Clientes Satisfeitos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Modelos Exclusivos</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Qualidade Garantida</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="equipe" id="equipe">
+            <div class="container">
+                <h2 class="equipe-title">Nossa Equipe</h2>
+                <div class="membros">
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=CS" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Carlos Silva</h3>
+                        <p class="cargo">Diretor Criativo</p>
+                        <p class="descricao">Responsável pela direção artística e conceitual de nossas coleções.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=AS" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Ana Santos</h3>
+                        <p class="cargo">Designer Chefe</p>
+                        <p class="descricao">Cria designs inovadores que tornam nossas camisetas únicas.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=RO" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Ricardo Oliveira</h3>
+                        <p class="cargo">Gerente de Produção</p>
+                        <p class="descricao">Garante a qualidade e o padrão excepcional de todas as peças.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=MC" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Mariana Costa</h3>
+                        <p class="cargo">Marketing Digital</p>
+                        <p class="descricao">Conecta nossa marca com o público através de estratégias inovadoras.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=TP" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Thiago Pereira</h3>
+                        <p class="cargo">Especialista em Atendimento</p>
+                        <p class="descricao">Garante que cada cliente tenha uma experiência excepcional conosco.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="membro">
+                        <img src="https://placehold.co/150x150/000/ff6600?text=LR" alt="Membro da equipe" class="foto-equipe">
+                        <h3 class="nome-membro">Laura Rodrigues</h3>
+                        <p class="cargo">Coordenadora de Qualidade</p>
+                        <p class="descricao">Assegura que cada peça atenda aos mais altos padrões de qualidade.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="container">
+                <h2 class="cta-title">Tem interesse em fazer parte da nossa equipe?</h2>
+                <p class="descricao">Estamos sempre em busca de talentos apaixonados por moda e inovação</p>
+                <a href="#" class="cta-button">Envie seu Currículo</a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <img src="imagens/logo.png" alt="Logo Thominhas" class="footer-logo">
+            <p>Expressando sua personalidade através de nossas peças</p>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#equipe">Equipe</a>
+                <a href="#">Contato</a>
+                <a href="#">Políticas</a>
+            </div>
+            <p class="copyright">&copy; 2025 Thominhas Camisetas - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegação suave para as seções
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
